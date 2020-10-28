@@ -10,20 +10,21 @@ module ProductInf
       end
 
       def find(poke_name, apikey)
+        # data = all data
         data = @gateway.product_data(poke_name, apikey)
-        puts data
-        # all data
         build_entity(data['results'])
       end
 
-      def build_entity(data)
-        DataMapper.new(data).build_entity
+      def build_entity(products)
+        products.map do |product|
+          DataMapper.new(product).build_entity
+        end
       end
 
       # Extracts entity specific elements from data structure
       class DataMapper
-        def initialize(data)
-          @data = data
+        def initialize(product_detail)
+          @data = product_detail
         end
 
         def build_entity

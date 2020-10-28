@@ -26,6 +26,7 @@ class Results
   attr_accessor :title, :link, :image, :rating, :ratings_total, :currency, :price
 
   def initialize(title, link, image, rating, ratings_total, currency, price)
+    # def initialize(title, link, **options)
     @title = title
     @link = link
     @image = image
