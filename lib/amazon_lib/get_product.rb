@@ -16,11 +16,12 @@ def call_amazon_url(url)
   )
 end
 
-amazon_results = {}
+# amazon_results = {}
 config = YAML.safe_load(File.read('config/secrets.yml'))
 url = amazon_api_path(config, 'Pikachu')
 amazon_obj = call_amazon_url(url)
 
+# product results
 class Results
   attr_accessor :title, :link, :image, :rating, :ratings_total, :currency, :price
 
